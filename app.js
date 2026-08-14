@@ -705,7 +705,7 @@ nano debug.sh</pre></div>
 <div class="code-block"><pre>#!/bin/bash
 NAME="Nkechi"
 echo "Hello $NAMAE"
-echo "Your name has ${#NAME} characters"</pre></div>
+echo "Your name has \${#NAME} characters"</pre></div>
 <p>The bug is <code>$NAMAE</code> — a typo of <code>$NAME</code>. Without debugging, you might not spot it.</p></div>
 
 <div class="step"><h4>Step 3: Run without debugging</h4>
@@ -722,7 +722,7 @@ Your name has 6 characters</div></div>
 set -x
 NAME="Nkechi"
 echo "Hello $NAMAE"
-echo "Your name has ${#NAME} characters"</pre></div>
+echo "Your name has \${#NAME} characters"</pre></div>
 <div class="expected"><strong>Expected Output:</strong>
 + NAME=Nkechi
 + echo 'Hello '
