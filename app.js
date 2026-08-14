@@ -903,7 +903,7 @@ function renderSidebar() {
 function selectLab(id) {
   activeId = id;
   const lab = LABS.find(l => l.id === id);
-  const contentDiv = document.getElementById('chapter-content');
+  const contentDiv = document.getElementById('lab-content');
   if (contentDiv && lab) {
     const html = LAB_CONTENTS[id] || '<p>Content coming soon.</p>';
     contentDiv.innerHTML = '<div class="hero"><h1>' + lab.emoji + ' ' + lab.title + '</h1><p>' + lab.desc + '</p></div>' + html;
@@ -953,7 +953,7 @@ document.addEventListener('DOMContentLoaded', function() {
   selectLab(1);
 
   // Add mark done button
-  const content = document.getElementById('chapter-content');
+  const content = document.getElementById('lab-content');
   if (content) {
     const observer = new MutationObserver(function() {
       const existing = document.getElementById('mark-done-btn');
