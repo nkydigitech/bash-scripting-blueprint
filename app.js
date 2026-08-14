@@ -862,3 +862,111 @@ Backups stored: 5
 (no output — backup files and script removed)</div></div>
 <div class="card" style="border-left:4px solid var(--accent)"><div class="section-title">🚀 Production Note</div><p>This script is production-ready. To use it for real: 1) Change SOURCE to your actual data folder. 2) Add it to crontab with <code>crontab -e</code> and schedule it to run daily at 2am: <code>0 2 * * * /home/user/backup.sh</code>. 3) Monitor the log file for failures. This is exactly how companies automate backups — no manual intervention needed.</p></div>`
 };
+
+// ===== RENDERING FUNCTIONS =====
+const $ = s => document.querySelector(s);
+let activeId = 1;
+
+function saveProgress(id) {
+  const done = JSON.parse(localStorage.getItem('bash-blueprint-done') || '[]');
+  if (!done.includes(id)) {
+    done.push(id);
+    localStorage.setItem('bash-blueprint-done', JSON.stringify(done));
+  }
+  renderProgress();
+}
+
+function renderProgress() {
+  const done = JSON.parse(localStorage.getItem('bash-blueprint-done') || '[]');
+  const pct = Math.round((done.length / LABS.length) * 100);
+  const bar = document.getElementById('progress-bar');
+  const text = document.getElementById('progress-text');
+  if (bar) bar.style.width = pct + '%';
+  if (text) text.textContent = done.length + '/' + LABS.length + ' \u2022 ' + pct + '%';
+}
+
+function renderSidebar() {
+  const list = document.getElementById('sidebar-list');
+  if (!list) return;
+  const done = JSON.parse(localStorage.getItem('bash-blueprint-done') || '[]');
+  list.innerHTML = LABS.map(lab => {
+    const isDone = done.includes(lab.id);
+    const isActive = lab.id === activeId;
+    return '<div class="lab-item' + (isActive ? ' active' : '') + '" onclick="selectLab(' + lab.id + ')">' +
+      '<span class="lab-emoji">' + lab.emoji + '</span> ' +
+      '<span class="lab-title">' + lab.title + '</span>' +
+      (isDone ? ' <span class="check">\u2705</span>' : '') +
+      '</div>';
+  }).join('');
+}
+
+function selectLab(id) {
+  activeId = id;
+  const lab = LABS.find(l => l.id === id);
+  const contentDiv = document.getElementById('chapter-content');
+  if (contentDiv && lab) {
+    const html = LAB_CONTENTS[id] || '<p>Content coming soon.</p>';
+    contentDiv.innerHTML = '<div class="hero"><h1>' + lab.emoji + ' ' + lab.title + '</h1><p>' + lab.desc + '</p></div>' + html;
+    contentDiv.scrollTop = 0;
+  }
+  renderSidebar();
+  if (window.innerWidth <= 768) {
+    document.getElementById('sidebar').classList.remove('open');
+  }
+}
+
+function renderLabGrid() {
+  const grid = document.getElementById('lab-grid');
+  if (!grid) return;
+  grid.innerHTML = LABS.map(lab =>
+    '<div class="lab-card" onclick="selectLab(' + lab.id + ')">' +
+    '<span style="font-size:24px">' + lab.emoji + '</span>' +
+    '<div>' + lab.title + '</div></div>'
+  ).join('');
+}
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
+function toggleTheme() {
+  document.body.classList.toggle('light');
+  localStorage.setItem('bash-blueprint-theme', document.body.classList.contains('light') ? 'light' : 'dark');
+}
+
+// Mark as done button
+function markDone() {
+  saveProgress(activeId);
+  renderSidebar();
+}
+
+// Init on page load
+document.addEventListener('DOMContentLoaded', function() {
+  // Theme
+  if (localStorage.getItem('bash-blueprint-theme') === 'light') {
+    document.body.classList.add('light');
+  }
+
+  renderProgress();
+  renderSidebar();
+  renderLabGrid();
+  selectLab(1);
+
+  // Add mark done button
+  const content = document.getElementById('chapter-content');
+  if (content) {
+    const observer = new MutationObserver(function() {
+      const existing = document.getElementById('mark-done-btn');
+      if (!existing) {
+        const btn = document.createElement('button');
+        btn.id = 'mark-done-btn';
+        btn.className = 'toggle';
+        btn.style.cssText = 'position:fixed;bottom:20px;right:20px;z-index:100;background:#2da44e;color:white;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-size:14px;';
+        btn.textContent = '\u2705 Mark as Done';
+        btn.onclick = markDone;
+        document.body.appendChild(btn);
+      }
+    });
+    observer.observe(content, { childList: true, subtree: true });
+  }
+});
