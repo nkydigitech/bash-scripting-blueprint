@@ -14,7 +14,8 @@ const LABS = [
 ];
 
 const LAB_CONTENTS = {
-1: `<div class="card"><span class="badge">🇳🇬 Naija Analogy</span><p>Imagine you just arrived at a busy bus park in Lagos (a <i>danfo</i> is a yellow public bus in Nigeria). Before you jump on any bus, you ask three questions: <b>Where am I?</b> <b>What buses are available?</b> <b>Which bus do I enter?</b> The terminal works the same way.</p></div>
+1: `<div class="lab-hero" style="margin-bottom:16px;border-radius:12px;overflow:hidden;"><img src="https://media.base44.com/images/public/6a2385806384a54f79b66c39/77e572369_generated_image.png" alt="Terminal Basics — Danfo Bus Park" style="width:100%;height:auto;display:block;border-radius:12px;" loading="lazy" /></div>
+<div class="card"><span class="badge">🇳🇬 Naija Analogy</span><p>Imagine you just arrived at a busy bus park in Lagos (a <i>danfo</i> is a yellow public bus in Nigeria). Before you jump on any bus, you ask three questions: <b>Where am I?</b> <b>What buses are available?</b> <b>Which bus do I enter?</b> The terminal works the same way.</p></div>
 <div class="card"><div class="section-title">📋 Prerequisites</div><ul><li>A laptop with a terminal (Linux, macOS, Windows with WSL or Git Bash)</li><li>No prior experience needed — this is the absolute starting point</li></ul></div>
 <div class="card"><div class="section-title">🔧 Step-by-Step</div>
 
@@ -66,7 +67,8 @@ Desktop  Documents  Downloads  devops-practice  Music  Pictures</div></div>
 <p>This lab created a folder called devops-practice. Keep it — you will use it in every lab going forward.</p></div>
 <div class="card" style="border-left:4px solid var(--accent)"><div class="section-title">🚀 Production Note</div><p>Always run <code>pwd</code> before running destructive commands like <code>rm -rf</code> (remove) or <code>terraform apply</code>. Being in the wrong folder when you run those can destroy a production server. Many engineers have lost their jobs this way.</p></div>`,
 
-2: `<div class="card"><span class="badge">🇳🇬 Naija Analogy</span><p>An <i>owambe</i> is a big Nigerian celebration party. To set one up, you: rent a <b>hall</b> (create a folder), arrange <b>plates</b> on tables (create files), <b>copy</b> plates for more guests, <b>move</b> some to the VIP section, and <b>clean up</b> after the party. File management in the terminal works exactly the same way.</p></div>
+2: `<div class="lab-hero" style="margin-bottom:16px;border-radius:12px;overflow:hidden;"><img src="https://media.base44.com/images/public/6a2385806384a54f79b66c39/b1296f5e2_generated_image.png" alt="Files & Directories — Owambe Party Setup" style="width:100%;height:auto;display:block;border-radius:12px;" loading="lazy" /></div>
+<div class="card"><span class="badge">🇳🇬 Naija Analogy</span><p>An <i>owambe</i> is a big Nigerian celebration party. To set one up, you: rent a <b>hall</b> (create a folder), arrange <b>plates</b> on tables (create files), <b>copy</b> plates for more guests, <b>move</b> some to the VIP section, and <b>clean up</b> after the party. File management in the terminal works exactly the same way.</p></div>
 <div class="card"><div class="section-title">📋 Prerequisites</div><ul><li>Lab 1 completed (you have a devops-practice folder)</li></ul></div>
 <div class="card"><div class="section-title">🔧 Step-by-Step</div>
 
@@ -154,7 +156,8 @@ menu.txt  vip-guests.txt</div></div>
 (no output — folder and all files inside deleted)</div></div>
 <div class="card" style="border-left:4px solid var(--accent)"><div class="section-title">🚀 Production Note</div><p>Never run <code>rm -rf</code> with a variable if that variable might be empty. <code>rm -rf $FOLDER</code> where <code>$FOLDER</code> is empty becomes <code>rm -rf</code> which deletes EVERYTHING on the server. Always check first: <code>[ -z "$FOLDER" ] &amp;&amp; exit 1</code>.</p></div>`,
 
-3: `<div class="card"><span class="badge">🇳🇬 Naija Analogy</span><p>A <i>suya</i> seller in Lagos (suya is spicy grilled meat on a stick) has a recipe: cut meat, add spices (<i>yaji</i> — a Hausa spice blend), grill. He writes this recipe once and follows it every day. A bash script is the same — you write commands once in a file, then run that file anytime instead of typing each command manually.</p></div>
+3: `<div class="lab-hero" style="margin-bottom:16px;border-radius:12px;overflow:hidden;"><img src="https://media.base44.com/images/public/6a2385806384a54f79b66c39/d2ff6ed47_generated_image.png" alt="First Bash Script — Suya Recipe" style="width:100%;height:auto;display:block;border-radius:12px;" loading="lazy" /></div>
+<div class="card"><span class="badge">🇳🇬 Naija Analogy</span><p>A <i>suya</i> seller in Lagos (suya is spicy grilled meat on a stick) has a recipe: cut meat, add spices (<i>yaji</i> — a Hausa spice blend), grill. He writes this recipe once and follows it every day. A bash script is the same — you write commands once in a file, then run that file anytime instead of typing each command manually.</p></div>
 <div class="card"><div class="section-title">📋 Prerequisites</div><ul><li>Lab 2 completed (know mkdir, touch, cd)</li><li>A text editor — we will use <code>nano</code> (a simple built-in editor)</li></ul></div>
 <div class="card"><div class="section-title">🔧 Step-by-Step</div>
 
@@ -216,7 +219,8 @@ Today is Thu Aug 14 13:00:00 WAT 2026</div></div>
 (no output — script deleted)</div></div>
 <div class="card" style="border-left:4px solid var(--accent)"><div class="section-title">🚀 Production Note</div><p>Every bash script in production starts with <code>#!/bin/bash</code>. Without the shebang, the system might try to run it with a different shell, causing unexpected errors. Always include it.</p></div>`,
 
-4: `<div class="card"><span class="badge">🇳🇬 Naija Analogy</span><p>At Computer Village in Lagos (a famous electronics market), every phone has a price tag. The price can change anytime. A <b>variable</b> in bash is like that price tag — it stores a value that you can use and change throughout your script.</p></div>
+4: `<div class="lab-hero" style="margin-bottom:16px;border-radius:12px;overflow:hidden;"><img src="https://media.base44.com/images/public/6a2385806384a54f79b66c39/79242a0c2_generated_image.png" alt="Variables — Computer Village Price Tags" style="width:100%;height:auto;display:block;border-radius:12px;" loading="lazy" /></div>
+<div class="card"><span class="badge">🇳🇬 Naija Analogy</span><p>At Computer Village in Lagos (a famous electronics market), every phone has a price tag. The price can change anytime. A <b>variable</b> in bash is like that price tag — it stores a value that you can use and change throughout your script.</p></div>
 <div class="card"><div class="section-title">📋 Prerequisites</div><ul><li>Lab 3 completed (can create and run a script)</li></ul></div>
 <div class="card"><div class="section-title">🔧 Step-by-Step</div>
 
@@ -267,7 +271,8 @@ Hello, Nkechi! Welcome to Computer Village.</div></div>
 (no output — file deleted)</div></div>
 <div class="card" style="border-left:4px solid var(--accent)"><div class="section-title">🚀 Production Note</div><p>Always quote variables: use <code>"$VAR"</code> not <code>$VAR</code>. Without quotes, a variable with spaces will break your script. Example: <code>FILE="my document.txt"</code> — without quotes, bash sees "my" and "document.txt" as two separate words.</p></div>`,
 
-5: `<div class="card"><span class="badge">🇳🇬 Naija Analogy</span><p>In Nigeria, when <b>NEPA</b> (the power company, now called Ikeja Electric or Eko DisCO) brings light, you turn on the AC. When they take light, you switch to the generator. That "if-else" decision is exactly what <b>conditionals</b> do in code — different actions depending on different situations.</p></div>
+5: `<div class="lab-hero" style="margin-bottom:16px;border-radius:12px;overflow:hidden;"><img src="https://media.base44.com/images/public/6a2385806384a54f79b66c39/e96eac69e_generated_image.png" alt="Conditionals — NEPA Light vs Generator" style="width:100%;height:auto;display:block;border-radius:12px;" loading="lazy" /></div>
+<div class="card"><span class="badge">🇳🇬 Naija Analogy</span><p>In Nigeria, when <b>NEPA</b> (the power company, now called Ikeja Electric or Eko DisCO) brings light, you turn on the AC. When they take light, you switch to the generator. That "if-else" decision is exactly what <b>conditionals</b> do in code — different actions depending on different situations.</p></div>
 <div class="card"><div class="section-title">📋 Prerequisites</div><ul><li>Lab 4 completed (knows variables and echo)</li></ul></div>
 <div class="card"><div class="section-title">🔧 Step-by-Step</div>
 
@@ -342,7 +347,8 @@ Good morning! Time for work.</div></div>
 (no output — file deleted)</div></div>
 <div class="card" style="border-left:4px solid var(--accent)"><div class="section-title">🚀 Production Note</div><p>Always quote your variables in conditions: use <code>[ "$VAR" = "value" ]</code> not <code>[ $VAR = value ]</code>. If <code>$VAR</code> is empty, the unquoted version causes a syntax error that can crash your script or create a security vulnerability.</p></div>`,
 
-6: `<div class="card"><span class="badge">🇳🇬 Naija Analogy</span><p>At a Nigerian party, if 100 guests each need a plate of <i>jollof</i> rice (a popular Nigerian rice dish), you do not serve them one by one. You write "serve 100 plates" and the kitchen handles the rest. A <b>loop</b> does the same — it repeats a command many times without you typing it over and over.</p></div>
+6: `<div class="lab-hero" style="margin-bottom:16px;border-radius:12px;overflow:hidden;"><img src="https://media.base44.com/images/public/6a2385806384a54f79b66c39/52e292354_generated_image.png" alt="Loops — Serving Jollof to 100 Guests" style="width:100%;height:auto;display:block;border-radius:12px;" loading="lazy" /></div>
+<div class="card"><span class="badge">🇳🇬 Naija Analogy</span><p>At a Nigerian party, if 100 guests each need a plate of <i>jollof</i> rice (a popular Nigerian rice dish), you do not serve them one by one. You write "serve 100 plates" and the kitchen handles the rest. A <b>loop</b> does the same — it repeats a command many times without you typing it over and over.</p></div>
 <div class="card"><div class="section-title">📋 Prerequisites</div><ul><li>Lab 5 completed (knows conditionals)</li></ul></div>
 <div class="card"><div class="section-title">🔧 Step-by-Step</div>
 
@@ -415,7 +421,8 @@ Guest number 3 has been served</div></div>
 (no output — file deleted)</div></div>
 <div class="card" style="border-left:4px solid var(--accent)"><div class="section-title">🚀 Production Note</div><p>Loops are essential in DevOps. You use them to: process 100 servers, check 50 log files, create 10 user accounts, or restart services on multiple machines. Mastering loops saves hours of manual work.</p></div>`,
 
-7: `<div class="card"><span class="badge">🇳🇬 Naija Analogy</span><p>A <i>suya</i> seller (suya is spicy grilled meat) trains one assistant to prepare the spice mix. Instead of mixing spices himself every time, he just calls "Hey, do the spice mix!" and the assistant does it. A <b>function</b> is that trained assistant — you package a set of commands, give it a name, and call that name whenever you need it.</p></div>
+7: `<div class="lab-hero" style="margin-bottom:16px;border-radius:12px;overflow:hidden;"><img src="https://media.base44.com/images/public/6a2385806384a54f79b66c39/d1748150c_generated_image.png" alt="Functions — Trained Kitchen Assistant" style="width:100%;height:auto;display:block;border-radius:12px;" loading="lazy" /></div>
+<div class="card"><span class="badge">🇳🇬 Naija Analogy</span><p>A <i>suya</i> seller (suya is spicy grilled meat) trains one assistant to prepare the spice mix. Instead of mixing spices himself every time, he just calls "Hey, do the spice mix!" and the assistant does it. A <b>function</b> is that trained assistant — you package a set of commands, give it a name, and call that name whenever you need it.</p></div>
 <div class="card"><div class="section-title">📋 Prerequisites</div><ul><li>Lab 6 completed (knows loops and variables)</li></ul></div>
 <div class="card"><div class="section-title">🔧 Step-by-Step</div>
 
@@ -474,7 +481,8 @@ Serving Chidi a plate of amala</div></div>
 (no output — file deleted)</div></div>
 <div class="card" style="border-left:4px solid var(--accent)"><div class="section-title">🚀 Production Note</div><p>In production scripts, functions are how you keep code organized. A 500-line script with no functions is impossible to maintain. The same script with 10 well-named functions is readable and fixable. Always break large scripts into functions.</p></div>`,
 
-8: `<div class="card"><span class="badge">🇳🇬 Naija Analogy</span><p>A <i>danfo</i> bus in Lagos (a yellow public bus) goes from CMS (a major bus stop) to Ikorodu (a suburb). The bus carries output from one place to another. In bash, a <b>pipe</b> <code>|</code> does the same — it takes the output of one command and sends it as input to another command.</p></div>
+8: `<div class="lab-hero" style="margin-bottom:16px;border-radius:12px;overflow:hidden;"><img src="https://media.base44.com/images/public/6a2385806384a54f79b66c39/0df6683bf_generated_image.png" alt="Pipes & Redirection — Danfo Bus Connection" style="width:100%;height:auto;display:block;border-radius:12px;" loading="lazy" /></div>
+<div class="card"><span class="badge">🇳🇬 Naija Analogy</span><p>A <i>danfo</i> bus in Lagos (a yellow public bus) goes from CMS (a major bus stop) to Ikorodu (a suburb). The bus carries output from one place to another. In bash, a <b>pipe</b> <code>|</code> does the same — it takes the output of one command and sends it as input to another command.</p></div>
 <div class="card"><div class="section-title">📋 Prerequisites</div><ul><li>Lab 7 completed (knows functions)</li></ul></div>
 <div class="card"><div class="section-title">🔧 Step-by-Step</div>
 
@@ -557,7 +565,8 @@ cat summary.txt</pre></div>
 (no output — files deleted)</div></div>
 <div class="card" style="border-left:4px solid var(--accent)"><div class="section-title">🚀 Production Note</div><p>Pipes are how DevOps engineers process logs efficiently. Example: <code>cat access.log | grep "404" | sort | uniq -c | sort -nr | head -10</code> finds the top 10 URLs returning 404 errors. This one line replaces a 50-line Python script.</p></div>`,
 
-9: `<div class="card"><span class="badge">🇳🇬 Naija Analogy</span><p>Mile 12 is a famous food market in Lagos. When you arrive, you do not read every single stall. You <b>search</b> for what you need, <b>filter</b> by price, and <b>sort</b> by quality. Text processing commands in bash do the same — they search, filter, and transform text files.</p></div>
+9: `<div class="lab-hero" style="margin-bottom:16px;border-radius:12px;overflow:hidden;"><img src="https://media.base44.com/images/public/6a2385806384a54f79b66c39/23ad7f629_generated_image.png" alt="Text Processing — Mile 12 Market" style="width:100%;height:auto;display:block;border-radius:12px;" loading="lazy" /></div>
+<div class="card"><span class="badge">🇳🇬 Naija Analogy</span><p>Mile 12 is a famous food market in Lagos. When you arrive, you do not read every single stall. You <b>search</b> for what you need, <b>filter</b> by price, and <b>sort</b> by quality. Text processing commands in bash do the same — they search, filter, and transform text files.</p></div>
 <div class="card"><div class="section-title">📋 Prerequisites</div><ul><li>Lab 8 completed (knows pipes and redirection)</li></ul></div>
 <div class="card"><div class="section-title">🔧 Step-by-Step</div>
 
@@ -625,7 +634,8 @@ MoiMoi 300 15</div></div>
 (no output — file deleted)</div></div>
 <div class="card" style="border-left:4px solid var(--accent)"><div class="section-title">🚀 Production Note</div><p>These commands are how you parse logs in production. Example: <code>grep "ERROR" app.log | awk '{print $1}' | sort | uniq -c | sort -nr</code> finds which dates had the most errors. Every DevOps engineer uses these daily.</p></div>`,
 
-10: `<div class="card"><span class="badge">🇳🇬 Naija Analogy</span><p>A traffic light in Lagos: green means go (success), red means stop (problem). In bash, every command sends an <b>exit code</b> when it finishes: <code>0</code> means success (green light), anything else means something went wrong (red light). Your script can check these codes and react.</p></div>
+10: `<div class="lab-hero" style="margin-bottom:16px;border-radius:12px;overflow:hidden;"><img src="https://media.base44.com/images/public/6a2385806384a54f79b66c39/30f2bb6ff_generated_image.png" alt="Exit Codes — Lagos Traffic Light" style="width:100%;height:auto;display:block;border-radius:12px;" loading="lazy" /></div>
+<div class="card"><span class="badge">🇳🇬 Naija Analogy</span><p>A traffic light in Lagos: green means go (success), red means stop (problem). In bash, every command sends an <b>exit code</b> when it finishes: <code>0</code> means success (green light), anything else means something went wrong (red light). Your script can check these codes and react.</p></div>
 <div class="card"><div class="section-title">📋 Prerequisites</div><ul><li>Lab 9 completed (knows grep, awk, sed)</li></ul></div>
 <div class="card"><div class="section-title">🔧 Step-by-Step</div>
 
@@ -689,7 +699,9 @@ Done!</div></div>
 (no output — folders deleted)</div></div>
 <div class="card" style="border-left:4px solid var(--accent)"><div class="section-title">🚀 Production Note</div><p>Every production script should start with <code>set -e</code>. Without it, a failed command is silently ignored and the script keeps going, potentially causing damage. With <code>set -e</code>, the script stops at the first error, preventing a small mistake from becoming a big disaster.</p></div>`,
 
-11: `<div class="card"><span class="badge">🇳🇬 Naija Analogy</span><p>When NEPA (the power company) takes light in Nigeria, you grab a torch (flashlight) to see what went wrong. In bash, <code>set -x</code> is that torch — it shows every command as it runs, so you can see exactly where your script broke. <code>shellcheck</code> is like an electrician — it checks your wiring before the power goes out.</p></div>
+11: `<div class="lab-hero" style="margin-bottom:16px;border-radius:12px;overflow:hidden;"><img src="https://media.base44.com/images/public/6a2385806384a54f79b66c39/bc48bfcfa_generated_image.png" alt="Debugging — NEPA Torch" style="width:100%;height:auto;display:block;border-radius:12px;" loading="lazy" /></div>
+<div class="lab-hero" style="margin-bottom:16px;border-radius:12px;overflow:hidden;"><img src="https://media.base44.com/images/public/6a2385806384a54f79b66c39/77e572369_generated_image.png" alt="Terminal Basics — Danfo Bus Park" style="width:100%;height:auto;display:block;border-radius:12px;" loading="lazy" /></div>
+<div class="card"><span class="badge">🇳🇬 Naija Analogy</span><p>When NEPA (the power company) takes light in Nigeria, you grab a torch (flashlight) to see what went wrong. In bash, <code>set -x</code> is that torch — it shows every command as it runs, so you can see exactly where your script broke. <code>shellcheck</code> is like an electrician — it checks your wiring before the power goes out.</p></div>
 <div class="card"><div class="section-title">📋 Prerequisites</div><ul><li>Lab 10 completed (knows exit codes)</li></ul></div>
 <div class="card"><div class="section-title">🔧 Step-by-Step</div>
 
@@ -757,7 +769,9 @@ echo "Hello $NAMAE"
 (no output — file deleted)</div></div>
 <div class="card" style="border-left:4px solid var(--accent)"><div class="section-title">🚀 Production Note</div><p>Install shellcheck on your machine: <code>sudo apt install shellcheck</code>. Run it on every script before deploying. It catches bugs that would take hours to find manually. Most CI/CD pipelines include a shellcheck step automatically.</p></div>`,
 
-12: `<div class="card"><span class="badge">🏆 Capstone Project</span><p>You are now a DevOps engineer at a Nigerian tech company. Your boss says: "We need a script that backs up our important files every day, logs what happened, and cleans up old backups." You will use everything you learned — variables, conditionals, loops, functions, error handling, and debugging — to build this.</p></div>
+12: `<div class="lab-hero" style="margin-bottom:16px;border-radius:12px;overflow:hidden;"><img src="https://media.base44.com/images/public/6a2385806384a54f79b66c39/a4b1c9b12_generated_image.png" alt="Capstone — Backup Automation Script" style="width:100%;height:auto;display:block;border-radius:12px;" loading="lazy" /></div>
+<div class="lab-hero" style="margin-bottom:16px;border-radius:12px;overflow:hidden;"><img src="https://media.base44.com/images/public/6a2385806384a54f79b66c39/b1296f5e2_generated_image.png" alt="Files & Directories — Owambe Party Setup" style="width:100%;height:auto;display:block;border-radius:12px;" loading="lazy" /></div>
+<div class="card"><span class="badge">🏆 Capstone Project</span><p>You are now a DevOps engineer at a Nigerian tech company. Your boss says: "We need a script that backs up our important files every day, logs what happened, and cleans up old backups." You will use everything you learned — variables, conditionals, loops, functions, error handling, and debugging — to build this.</p></div>
 <div class="card"><div class="section-title">📋 Prerequisites</div><ul><li>All 11 previous labs completed</li></ul></div>
 <div class="card"><div class="section-title">🔧 Step-by-Step</div>
 
